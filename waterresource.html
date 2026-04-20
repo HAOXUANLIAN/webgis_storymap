@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>2023年人均水资源量</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body{padding:30px; font-family: "Microsoft YaHei", sans-serif;}
+    .box{max-width:1000px; margin:0 auto;}
+    h2{font-size: 20px; text-align: center; color:#333;}
+</style>
+</head>
+<body>
+<div class="box">
+    <h2>2023年人均水资源量对比</h2>
+    <canvas id="chart1"></canvas>
+</div>
+
+<script>
+const ctx1 = document.getElementById('chart1').getContext('2d');
+new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: ['全国', '河南省', '开封市'],
+        datasets: [{
+            label: '人均水资源量（m³/人）',
+            data: [1827.6, 479.8, 259.65],
+            backgroundColor: ['#4285F4','#4285F4','#4285F4'],
+            borderWidth:1
+        }]
+    },
+    options: {
+        responsive: true,
+        animation: { duration: 2000, easing: 'easeOutQuart' },
+        plugins: {
+            legend: {
+                labels: { font: { size: 18 } }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { font: { size: 18 } }
+            },
+            x: {
+                ticks: { font: { size: 20 } }
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>

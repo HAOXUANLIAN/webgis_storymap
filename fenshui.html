@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄河流域水量分配调整进程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        /* 流程整体：左对齐 + 垂直排列 */
+        .flow {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            gap: 0;
+        }
+
+        /* 每行：左对齐 + 相对定位，让箭头能精准吸附 */
+        .row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        /* 椭圆（统一大小、左对齐） */
+        .ellipse {
+            width: 190px;
+            height: 85px;
+            border: 2px solid #2c3e50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            background: #ecf0f1;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        /* 矩形：统一固定尺寸 */
+        .rect {
+            width: 260px;
+            height: 90px;
+            border: 2px solid #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: white;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            padding: 8px;
+            line-height: 1.4;
+        }
+
+        /* 纯水平直线（无箭头） */
+        .line {
+            height: 2px;
+            background: #2c3e50;
+            flex-shrink: 0;
+        }
+
+        /* 分支布局 */
+        .branch-group {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .branch-item {
+            display: flex;
+            align-items: center;
+        }
+
+        /* 悬浮交互 */
+        .ellipse:hover, .rect:hover {
+            background-color: #d5e9f7;
+            transform: scale(1.03);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">黄河流域水量分配调整进程</div>
+
+        <div class="flow">
+            <!-- 1：八七分水 → 空方框改为横直线 -->
+            <div class="row">
+                <div class="ellipse">1987年<br>"八七"分水</div>
+                <div class="line" style="width: 45px;"></div>
+                <div class="line" style="width: 260px;"></div> <!-- 替换为横直线 -->
+                <div class="line" style="width: 45px;"></div>
+                <div class="rect">年地表水耗水量<br>370亿m³</div>
+            </div>
+
+            <!-- 2：取水许可 → 空方框改为横直线 -->
+            <div class="row">
+                <div class="ellipse">黄河取水许可<br>总量控制细化</div>
+                <div class="line" style="width: 45px;"></div>
+                <div class="line" style="width: 260px;"></div> <!-- 替换为横直线 -->
+                <div class="line" style="width: 45px;"></div>
+                <div class="rect">年地表水耗水量<br>370亿m³</div>
+                <div class="line" style="width: 45px;"></div>
+                <div class="rect">与"八七"分水<br>比例关系为1：1</div>
+            </div>
+
+            <!-- 3 -->
+            <div class="row">
+                <div class="ellipse">黄河流域<br>综合规划</div>
+                <div class="line" style="width: 45px;"></div>
+                
+                <div class="branch-group">
+                    <div class="branch-item">
+                        <div class="rect">南水北调东线、<br>中线工程生效前</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">年地表水耗水量<br>341.2亿m³</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">与"八七"分水<br>比例关系为1：0.922</div>
+                    </div>
+                    <div class="branch-item">
+                        <div class="rect">南水北调东线、中线生效后<br>至西线一期工程生效前</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">年地表水耗水量<br>332.8亿m³</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">与"八七"分水比例<br>关系为1：0.899</div>
+                    </div>
+                    <div class="branch-item">
+                        <div class="rect">南水北调西线<br>一期工程生效后</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">年地表水耗水量<br>332.8亿m³（黄河）+<br>68.3亿m³（流域外调入）<br>=401.1亿m³</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">与"八七"分水<br>比例关系为1：0.899</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="row">
+                <div class="ellipse">黄河流域用水<br>总量控制指标</div>
+                <div class="line" style="width: 45px;"></div>
+                
+                <div class="branch-group">
+                    <div class="branch-item">
+                        <div class="rect">2020年</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">用水总量控制指标<br>450.8亿m³</div>
+                    </div>
+                    <div class="branch-item">
+                        <div class="rect">2030年</div>
+                        <div class="line" style="width: 45px;"></div>
+                        <div class="rect">用水总量控制指标<br>512.7亿m³</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
